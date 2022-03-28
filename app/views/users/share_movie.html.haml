@@ -1,0 +1,20 @@
+.container#share-page
+  .title
+    Share a youtube/tiktok clip
+  = form_for(@user, url: share_user_path(@user), method: :post, html: { class: 'form-vertical ' }) do |f|
+    .row.share-table
+      .form-group
+        = f.label :youtube_url, class: 'col-md-3'
+        = text_field_tag :video_url, '', class: 'form-control col-md-9'
+
+      .form-group
+        = f.label :title, class: 'col-md-3'
+        = text_field_tag :title, '', class: 'form-control col-md-9'
+
+      .form-group
+        = f.label :description, class: 'col-md-3'
+        = text_area_tag :description, '', class: 'form-control col-md-9'
+    &nbsp
+    &nbsp
+    .row
+      = f.submit 'Share', class: 'btn btn-primary share-button'

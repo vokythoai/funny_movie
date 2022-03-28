@@ -1,0 +1,40 @@
+.container#video-page
+  .tab-bar
+    %ul.nav
+      %li.nav-item
+        %a.nav-link{:href => "#{videos_path(type: 'trending')}", :class => "#{params[:type] == 'trending' ? 'active' : ''}"} Trending Video
+      %li.nav-item
+        %a.nav-link{:href => "#{videos_path(type: 'user')}", :class => "#{params[:type] == 'user' ? 'active' : ''}"} For You
+      %li.nav-item
+        %a.nav-link{:href => "#{videos_path(type: 'newest')}", :class => "#{params[:type] == 'newest' ? 'active' : ''}"} Newest
+      %li.nav-item
+        %a.nav-link{:href => "#{videos_path(type: 'all')}", :class => "#{params[:type] == 'all' ? 'active' : ''}"} All (For testing)
+  .search-bar
+  .container
+    - @videos.each do |video|
+      .video-item
+        .video-iframe
+          %a{href: "#{video_path(video)}"}
+            = image_tag video.thumbnail || 'missing.jpg', class: 'video-thumbnail'
+        .details
+          .video-title
+            = video.title
+          .shared_by
+            = "Shared by #{video.user_email}"
+          .vote-info
+            .like
+              = video.total_likes
+              = image_tag 'thumb-up.png', class: 'like-image like-button'
+            .dislike
+              .like
+              = video.total_dislikes
+              = image_tag 'thumb-down.png', class: 'like-image dislike-button'
+          .description
+            .title-desc Description
+            .description-details
+              = video.description
+
+  .row
+    .col
+      .float-right
+        = paginate @videos

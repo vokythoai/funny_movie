@@ -1,0 +1,153 @@
+#container-app {
+  #new_user {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  .tab-bar {
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-link.active {
+      background: #337ab7;
+      color: white;
+    }
+  }
+  .video-thumbnail {
+    width: 300px;
+    height: 300px;
+  }
+
+  .video-show-details {
+    .like-button, .dislike-button {
+      cursor: pointer;
+    }
+  }
+
+  .form-group {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .home-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header {
+    vertical-align: middle;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border-bottom: 1px solid grey;
+  }
+
+  .title {
+    font-size: 40px;
+    padding-left: 140px;
+  }
+
+  .page-content {
+    padding: 10px 160px;
+    text-align: center;
+  }
+
+  .user-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  .user-info {
+    margin-right: 20px;
+    font-weight: bold;
+  }
+
+  .share-movie {
+    margin-right: 20px;
+  }
+
+  #video-page {
+    .video-item {
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .details {
+      margin-left: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      line-height: 30px;
+
+      .vote-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .active {
+          filter: saturate(3);
+        }
+
+        .deactive {
+          filter: grayscale(100%);
+        }
+
+        .like {
+          display: flex;
+          align-items: center;
+          margin-right: 10px;
+        }
+      }
+
+      .like-image {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+      }
+
+      .video-title {
+        font-size: 18px;
+        color: red;
+        font-weight: bold;
+      }
+
+      .description-details {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.flash-message {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 7px 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 600;
+
+  &.flash-error {
+    background-color: #f85400;
+  }
+  &.flash-success {
+    background-color: #35A96A;
+  }
+
+  .close {
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: inherit;
+  }
+}

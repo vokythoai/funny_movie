@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title FunnyMovies
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", media: 'all'
+    = javascript_include_tag "application"
+    %script{:async => "", :src => "https://www.tiktok.com/embed.js"}
+  %body
+    = render 'layouts/flash_message'
+    #container-app
+      .header
+        %a.title{href: "#{root_path()}"}
+          = image_tag 'home.png', class: 'home-icon'
+          Funny Movies
+        .login-bar
+          - if current_user
+            .user-container
+              .user-info
+                Welcome #{current_user.email}
+              .share-movie
+                = link_to 'Share a movie', share_movie_user_path(current_user) , class: 'btn btn-info'
+              .logout
+                = link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-warning'
+          - else
+            .user-login-container
+              = link_to 'Log In', new_user_session_path, class: 'btn btn-primary'
+      .page-content
+        = yield

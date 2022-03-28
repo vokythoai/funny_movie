@@ -1,0 +1,76 @@
+.container#video-page
+  .video-item.video-show-details
+    - if @video.youtube?
+      = render 'youtube_iframe', local: { video: @video }
+    - elsif @video.tiktok?
+      = render 'tiktok_iframe', local: { video: @video }
+    - user_video = current_user ? @video.user_vote_info(current_user) : nil
+    .details
+      .video-title
+        = @video.title
+      .shared_by
+        = "Shared by #{@video.user_email}"
+      .vote-info
+        .like
+          .total-like-number
+            = @video.total_likes
+          = image_tag 'thumb-up.png', class: "like-image like-button #{user_video&.up_vote? ? 'active' : 'deactive'}"
+        .dislike
+          .like
+            .total-dislike-number
+              = @video.total_dislikes
+            = image_tag 'thumb-down.png', class: "like-image dislike-button #{user_video&.down_vote? ? 'active' : 'deactive'}"
+      .description
+        .title-desc Description
+        .description-details
+          = @video.description
+:javascript
+  $(".like-button").on("click", function() {
+    $.ajax({
+      type: "PUT",
+      url: "#{vote_video_path(@video)}",
+      data: { direction: 1 },
+      error: function(response) {
+        if (response.status == 200) {
+          $(".like-button").addClass("active")
+          $(".like-button").removeClass("deactive")
+          $(".dislike-button").addClass("deactive")
+          $(".dislike-button").removeClass("active")
+
+          var current_like = parseInt($('.total-like-number').text())
+          var current_dislike = parseInt($('.total-dislike-number').text())
+          $('.total-like-number').text(current_like + 1)
+          if (current_dislike > 0) {
+            $('.total-dislike-number').text(current_dislike - 1)
+          }
+        } else {
+          alert("You must login to vote")
+        }
+      }
+    });
+  })
+
+  $(".dislike-button").on("click", function() {
+    $.ajax({
+      type: "PUT",
+      url: "#{vote_video_path(@video)}",
+      data: { direction: 2 },
+      error: function(response) {
+        if (response.status == 200) {
+          $(".dislike-button").addClass("active")
+          $(".dislike-button").removeClass("deactive")
+          $(".like-button").addClass("deactive")
+          $(".like-button").removeClass("active")
+
+          var current_like = parseInt($('.total-like-number').text())
+          var current_dislike = parseInt($('.total-dislike-number').text())
+          if (current_like > 0) {
+            $('.total-like-number').text(current_like - 1)
+          }
+          $('.total-dislike-number').text(current_dislike + 1)
+        } else {
+          alert("You must login to vote")
+        }
+      }
+    });
+  })

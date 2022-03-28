@@ -1,0 +1,10 @@
+- if flash.present?
+  .flash-message{ class: (flash[:error] || flash[:alert]) ? 'flash-error' :  'flash-success' }
+    = flash[:error] || flash[:alert] || flash[:success] || flash[:notice]
+    %span.close
+      &times;
+
+:javascript
+  $('.flash-message .close').on('click', function(){
+    $('.flash-message').fadeOut(600)
+  });
