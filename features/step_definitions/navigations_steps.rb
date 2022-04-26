@@ -1,15 +1,20 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 
+driver = Selenium::WebDriver.for(
+  :chrome,
+  options: {}
+)
+
 Given /^I am on (.+)$/ do |page_name|
-  visit path_to(page_name)
+  driver.navigate.to "http://localhost:3000/"
 end
 
 When /^I go to (.+)$/ do |page_name|
-  visit path_to(page_name)
+  driver.navigate.to path_to(page_name)
 end
 
 When /^I press "([^\"]*)"$/ do |button|
-  click_button(button)
+  click_on(class: button)
 end
 
 When /^I click "([^\"]*)"$/ do |link|

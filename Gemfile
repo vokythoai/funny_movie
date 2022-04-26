@@ -81,6 +81,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'shoulda-matchers', '~> 5.1'
+  gem 'chromedriver-helper'
 end
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
