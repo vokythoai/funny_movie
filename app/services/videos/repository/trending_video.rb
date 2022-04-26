@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Videos::Repository::TrendingVideo.new.get
 module Videos
   module Repository
+    # Videos::Repository::TrendingVideo.new.get
     class TrendingVideo
       LIMIT_VIDEO_SHOWING = 50
 

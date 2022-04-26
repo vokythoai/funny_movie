@@ -61,6 +61,8 @@ group :development, :test do
   gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
   gem 'bullet'
   gem 'rails-controller-testing'
+  gem 'cucumber-rails'
+  gem 'capybara', require: false
 end
 
 group :development do
@@ -76,7 +78,6 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'shoulda-matchers', '~> 5.1'

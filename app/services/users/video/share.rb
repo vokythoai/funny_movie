@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Users::Video::Share.call(user:, params:)
 module Users
   module Video
+    # Users::Video::Share.call(user:, params:)
     class Share
       prepend SimpleCommand
 
