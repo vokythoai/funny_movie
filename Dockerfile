@@ -9,6 +9,7 @@ RUN apt-get update -qq && apt-get install -y nodejs postgresql-client && \
     rm -rf /var/cache/apk/*
 
 RUN apt remove -y cmdtest
+RUN npm install -g yarn
 
 RUN mkdir /app
 WORKDIR /app
@@ -24,5 +25,11 @@ EXPOSE 7000
 EXPOSE 443
 
 COPY . /app
+
+ENV NODE_ENV production
+ENV RAILS_ENV production
+ENV RAILS_SERVE_STATIC_FILES true
+
+RUN rake assets:precompile
 
 ENTRYPOINT ["./docker_entrypoint.sh"]

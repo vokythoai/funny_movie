@@ -63,6 +63,9 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'cucumber-rails'
   gem 'capybara', require: false
+  gem 'derailed_benchmarks'
+  gem 'stackprof'
+  gem 'benchmark-ips'
 end
 
 group :development do
