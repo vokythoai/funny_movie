@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Videos::Process::VideoProcessFactory
 module Videos
   module Process
+    # Videos::Process::VideoProcessFactory
     class VideoProcessFactory
       YOUTUBE_VIDEO        = :youtube
       TIKTOK_VIDEO         = :tiktok

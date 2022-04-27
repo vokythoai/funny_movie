@@ -11,8 +11,8 @@ describe Videos::Get, aggregate_failures: true do
   let!(:video1) { create :video, user: user }
   let!(:video2) { create :video, user: user2 }
   let!(:video3) { create :video, user: user2 }
-  let!(:user_video) { create :user_video, user_id: user.id, video_id: video.id}
-  let!(:user_video1) { create :user_video, user_id: user.id, video_id: video1.id}
+  let!(:user_video) { create :user_video, user_id: user.id, video_id: video.id }
+  let!(:user_video1) { create :user_video, user_id: user.id, video_id: video1.id }
 
   subject(:get_video) { described_class.call(user: user) }
 
